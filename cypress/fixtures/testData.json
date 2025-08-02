@@ -1,0 +1,57 @@
+{
+  "existingUser": {
+    "email": "test+special.chars@example.com",
+    "password": "P@$$w0rd!#$%^&*()"
+  },
+  
+  "edgeCases": {
+    "specialCharacters": {
+      "email": "test+special.chars@example.com",
+      "password": "P@$$w0rd!#$%^&*()",
+      "firstName": "José",
+      "lastName": "O'Connor-Smith"
+    }
+  },
+  
+  "apiTestData": {
+    "boundaryValues": {
+      "minLength": {
+        "userName": "a",
+        "password": "1"
+      },
+      "maxLength": {
+        "userName": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "password": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "specialCharacters": {
+        "userName": "user!@#$%^&*()",
+        "password": "P@$$w0rd!@#$%^&*()"
+      }
+    },
+    "malformedRequests": [
+      {
+        "description": "Missing userName field",
+        "body": {
+          "password": "ValidPassword123!"
+        }
+      },
+      {
+        "description": "Missing password field",
+        "body": {
+          "userName": "testUser"
+        }
+      },
+      {
+        "description": "Empty JSON object",
+        "body": {}
+      },
+      {
+        "description": "Invalid data types",
+        "body": {
+          "userName": 12345,
+          "password": true
+        }
+      }
+    ]
+  }
+}
